@@ -1,0 +1,3 @@
+[submodule "flask/flask_fundamentals/flask/flask_fundamentals/dojo_fruit_store"]
+	path = flask/flask_fundamentals/flask/flask_fundamentals/dojo_fruit_store
+	url = https://github.com/mchoidojo/dojo_fruit_store.git
