@@ -15,11 +15,6 @@ def hello_world(x):
 @app.route('/play/<x>/<color>')         
 def changeColor(x,color):
     return render_template('server.html', x=int(x), color=color ) 
-
-
-
-
-
 # @app.route('/repeat/play/<x>')
 # def repeat(play,x):
 #     return f"{play}"*int(x)
