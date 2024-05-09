@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, redirect, request
+from flask import Flask, render_template, session, redirect
 
 app = Flask(__name__)
 app.secret_key = 'My secret key' 
@@ -28,9 +28,9 @@ def CounterX2():
         view_count = session['view_count']
     else:
         view_count = 0
-    view_count += 2
+    view_count += 1
     session['view_count'] = view_count
-    return render_template('index.html',view_count=view_count )
+    return redirect('/')
 
 @app.route('/reset', methods=['POST'])
 def Reset():
