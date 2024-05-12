@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Counter</h1> 
+    <h2> {{request.session.count}} Times</h2>
+    <form action="/destroy_session" method="post">
+        {% csrf_token %}
+        <input type="submit" name="reset" value="reset" >
+    </form>
+    <form action="submitt" method="post">
+        {% csrf_token %}
+        <input placeholder=" specify the increment" name="incrementText"  cols="30" rows="1" type="number"> 
+        <button>submit</button>
+    </form>
+
+
+</body>
+</html>
