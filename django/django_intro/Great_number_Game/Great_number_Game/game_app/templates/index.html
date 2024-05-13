@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="static/style.css">
+    <style>
+        .box{
+        width:150px;
+        height: 30px;
+        background-color: {{request.session.color}};
+        margin: 30px;
+        color: white;
+        padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Great Number Game!</h1>
+        <h3>I am thinking of a number between 1 and 100</h3>
+        <h3>Take a guess!</h3>
+        <div class="box">{{request.session.text}}</div>
+        <form action="compare" method="post">
+            {% csrf_token %}
+            <input name="guess" cols="30" rows="1" type="number"> 
+            <button type="submit">submit</button>
+        </div>
+
+</body>
+</html>
