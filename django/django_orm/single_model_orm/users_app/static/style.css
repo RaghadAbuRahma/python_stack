@@ -1,0 +1,60 @@
+table{
+    width: 700px;
+    height: 150px;
+    border: 1px solid black;
+    margin: auto;
+    margin-top: 70px;
+    margin-bottom: 60px;
+}
+
+h1{
+    text-align: center;
+    margin-top: 50px;
+}
+
+td, th{
+    border: 1px black solid;
+    text-align: center;
+}
+
+hr{
+    border: 1px black solid;
+}
+
+.name{
+    margin-left: 470px;
+    margin-bottom: 50px;
+}
+.email{
+    margin-left: 470px;
+}
+
+.add{
+    margin-left:680px;
+    margin-top: 50px;
+    width: 80px;
+    height: 20x;
+    box-shadow: 2px 2px black;
+    background-color: gainsboro;
+}
+
+.input2{
+    margin-left: 10px;
+}
+
+.input3{
+    margin-left: 30px;
+}
+
+
+label{
+    margin-left: 10px;
+}
+
+.input4{
+    margin-left: 50px;
+}
+
+.add{
+ 
+}
