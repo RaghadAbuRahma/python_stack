@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="form">
+        <div class="dojoForm">
+            <h2>Add a Dojo</h2>
+            <form action="/add_dojo" method="post">
+                {% csrf_token %}
+                <div class="input1">
+                    <label for="name">Name: </label>
+                    <input type="text" name="name">
+                </div>
+                <div class="input1">
+                    <label for="city">City  : </label>
+                    <input type="text" name="city">
+                </div>
+                <div class="input1">
+                    <label for="state">State: </label>
+                    <input type="text" name="state">
+                </div>
+                    <input type="submit" value="add" name="add_dojo" >
+                </div>
+            </form>
+        <div class="ninjaForm">
+            <h2>Add a Ninja</h2>
+            <form action="/add_ninja" method="post">
+                {% csrf_token %}
+                <div class="input1">
+                    <label for="first_name">First Name: </label>
+                    <input type="text" name="first_name">
+                </div>
+                <div class="input1">
+                    <label for="last_name">Last Name  : </label>
+                    <input type="text" name="last_name">
+                </div>
+                <div class="input1">
+                    <label for="dojo">Dojo: </label>
+                    <select name="dojo">
+                        {% for Dojo in Dojos %}
+                        <option value="{{Dojo.id}}">{{Dojo.name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                    <input type="submit" value="add" name="add_dojo" >
+                </div>
+            </form>
+        </div>
+        
+    </div>
+    <div class="list">
+        <h1>All Dojos</h1>
+        <ul>
+            {% for Dojo in Dojos %}
+                <li>{{Dojo.name}}
+                    <ul>
+            <!-- looping through each author's books! -->
+                    {% for Ninja in Dojo.ninjas.all %}	
+                    <li><em>{{Ninja.first_name}}</em></li>
+                    {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+</div>  
+</body>
+</html>

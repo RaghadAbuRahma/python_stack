@@ -1,0 +1,20 @@
+label{
+    display: inline;
+}
+input{
+    display: inline;
+}
+
+.input1{
+    margin-bottom: 10px;
+}
+
+.form{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    text-align: center;
+}
+.list{
+    margin-left: 40%;
+}
