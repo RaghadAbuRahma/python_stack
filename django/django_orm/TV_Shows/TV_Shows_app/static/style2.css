@@ -1,0 +1,41 @@
+
+.container{
+    margin:  auto;
+    width: 500px;
+    
+}
+
+h1{
+    text-align: center;
+}
+
+input{
+    margin: 10px;
+}
+
+
+.input1{
+    width: 370px;
+    margin-left: 60px;
+}
+
+.input2, .input3{
+    width: 110px;
+    margin-left: 35px;
+}
+
+
+.input4{
+    width: 370px;
+    height: 80px;
+}
+
+.create{
+    margin-left: 260px;
+}
+
+
+.Goback{
+    margin-left: 400px;
+}
+
