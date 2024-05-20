@@ -1,10 +1,26 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from .models import *
+from django.contrib import messages
+
+def update(request, id):
+    errors = Show.objects.basic_validator(request.POST)
+
+    if len(errors) > 0:
+        for key, value in errors.items():
+            messages.error(request, value)
+        return redirect('/show/edit/'+id)
+    else:
+        show = Show.objects.get(id = id)
+        show.title = request.POST['title']
+        show.Network = request.POST['network']
+        Show.release_date = request.POST['release_date']
+        Show.save()
+        messages.success(request, "Show successfully updated")
+        return redirect('/shows')
+    
 def index(request):
     shows = Show.objects.all()
     context= { 'shows' : shows }
-
-
     return render(request, 'index.html', context)
 
 
@@ -13,13 +29,19 @@ def new_show(request):
 
 
 def create_show(request):
-    title = request.POST['title']
-    Network = request.POST['network']
-    release_date = request.POST['release_date']
-    # desc = request.POST['desc']
+    errors = Show.objects.basic_validator(request.POST)
 
-    create = Show.objects.create(title=title, Network=Network, release_date=release_date)
-    return redirect(f'/show/{create.id}')
+    if len(errors) > 0:
+        for key, value in errors.items():
+            messages.error(request, value)
+        return redirect('shows/new')
+    else:
+        title = request.POST['title']
+        Network = request.POST['network']
+        release_date = request.POST['release_date']
+        create = Show.objects.create(title=title, Network=Network, release_date=release_date)
+        messages.success(request, "Show successfully created")
+        return redirect(f'/show/{create.id}')
 
 def view_show(request, id): 
     this_show = Show.objects.get(id=id)
@@ -45,19 +67,24 @@ def delete(request, id):
 def back(request):
     return redirect('/shows')
 
-def update(request, id): 
-    Title = request.POST['title']
-    Network = request.POST['Network']
-    release_date = request.POST['release_date']
+# def update(request, id): 
+#     Title = request.POST['title']
+#     Network = request.POST['Network']
+#     release_date = request.POST['release_date']
 
-    to_update = Show.objects.get(id=id)
-    to_update.title= Title
-    to_update.Network= Network
-    to_update.release_date = release_date
-    to_update.save()
+#     to_update = Show.objects.get(id=id)
+#     to_update.title= Title
+#     to_update.Network= Network
+#     to_update.release_date = release_date
+#     to_update.save()
     
 
-    return redirect ('/shows')
+#     return redirect ('/shows')
+
+
+
+
+
 
     
 

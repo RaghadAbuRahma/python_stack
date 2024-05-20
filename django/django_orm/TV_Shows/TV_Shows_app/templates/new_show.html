@@ -9,6 +9,13 @@
 <body>
     <div class="container">
     <a href="/back">Go Back</a>
+    {% if messages %}
+<ul class="messages">    
+    {% for message in messages %}    
+        <li {%if message.tags%} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+    {% endfor %}
+</ul>
+{% endif %}
     <form action="/create" method="post">
         {% csrf_token %} 
             <h1>Add a New Show</h1>

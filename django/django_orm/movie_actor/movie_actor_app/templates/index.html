@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <img class="logo" src="static/img/logo.jpg" alt="">
+            <ul class="nav-links">
+                <li><a class="link" href="#">Movies</a></li>
+                <li><a class="link" href="#">Series</a></li>
+                <li><a class="link" href="#">Contact Us</a></li>
+            </ul>
+            <div class="search-container">
+                <input type="text" >
+                <button type="submit" style="font-size: 40px;"> Search</button>
+            </div>
+        </div>
+    </nav>
+    <div class="all_movies">
+        {% for movie in movies %}
+        <div class="movie" style="border: 2px dashed rgb(161, 209, 247);">
+            <img src="{{ movie.url_image}}" alt="{{ movie.title }}"/>
+            <h1 class="movie_name">{{ movie.title }}</h1>
+            <p>{{movie.category.name}}</p>
+            <p class="decs">{{ movie.description }}</p>
+            <p class="actors" >Actors: </p>
+                <ul>
+                    {% for actor in movie.actor.all %}
+                        <li>{{ actor.name }}</li>
+                    {% endfor %}
+                </ul>
+            
+        </div>
+    {% endfor %}
+    </div>
+</body>
+</html>

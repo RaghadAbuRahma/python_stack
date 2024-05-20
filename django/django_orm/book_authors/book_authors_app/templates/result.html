@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books And Authors</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <h1>{{title}}</h1>
+    <h3>ID : {{id}} </h3>
+    <p>Description: {{description}}</p>
+    <h2>Authors: </h2>
+    <ul>
+        {% for i in author %}
+        <li>{{ i.first_name }} {{i.last_name}} </li>
+        {% endfor %}
+    </ul>
+    <form action="/select_author" method="post">
+        <select name="author">
+            {%for author in authors%}
+            <option  value="{{author.id}}">{{author.first_name}}</option>
+            {%endfor%}
+        </select>
+        <input type="submit" value="add">
+    </form>
+    
+</body>
+</html>

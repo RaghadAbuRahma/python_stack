@@ -1,0 +1,45 @@
+table{
+    border: 1px solid black; 
+    width: 500px;
+    height: 300px;
+}
+
+th, td{
+    text-align: center;
+    border: 1px solid black;
+}
+
+
+.input2{
+    width: 170px;
+}
+
+.container{
+    display: flex;
+    justify-content: space-around;
+}
+.input1{
+    margin-bottom: 20px;
+    width: 170px
+}
+
+input2{
+    display: block;
+}
+
+.add{
+    display: block;
+    margin-left: 80px;
+    margin-top: 20px;
+    width: 60px;
+    height: 25px;
+    background-color: white;
+    box-shadow: 2px 2px 2px black;
+}
+
+.input3{
+    width: 170px;
+    height: 80px;
+    margin-left: 30px;
+    margin-top: 10px;
+}

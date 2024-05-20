@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books And Authors</title>
+    <link rel="stylesheet" href="static/style2.css">
+</head>
+<body>
+    <div class="container">
+        <form action="/add_authors" method="post">
+            {% csrf_token %} 
+            <h1>Add an Author</h1>
+            <div>
+                <label for="first_name">First Name :</label>
+                <input class="input1" type="text" name="first_name" >
+            </div>
+            <div>
+                <label for="last_name">Last Name :</label>
+                <input class="input2" type="text" name="last_name">
+            </div>
+            <div>
+                <label for="notes">Notes :</label>
+                <input class="input3" type="text" name="notes">
+            </div>
+            <input type="submit" value="add" class="add">
+        </form>
+        <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Action</th>
+        </tr>
+        {% for author in all_authors  %}
+        <tr>
+            <td>{{author.id}}</td>
+            <td>{{ author.first_name }} {{ author.last_name }}</td>
+            <td><a href="/authors/{{author.id}}">Action</a></td>
+    
+        </tr>
+        {% endfor %}
+
+    </table>
+</div>
+</body>
+</html>
