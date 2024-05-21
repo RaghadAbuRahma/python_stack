@@ -24,6 +24,7 @@ def new_register(request):
         Register.objects.create(first_name=first_name, last_name=last_name, email=email, password=pw_hash)
         return render(request, 'index2.html', context)
     
+    
 def validate_login(request):
     errors = Register.objects.basic_validator(request.POST)
     if len(errors) > 0:
@@ -49,7 +50,10 @@ def login(request):
         logged_user = user[0]
         if bcrypt.checkpw(request.POST['passwordd'].encode(),logged_user.password.encode()):
             request.session['userid'] = logged_user.id
+            request.session['user_name'] = logged_user.first_name
             return render(request, 'index2.html')
+        # if not request.session['userid']: 
+        #     return redirect ('/')
         else:
             messages.error(request, 'Incorrect password. Please try again.')
     else:
@@ -58,7 +62,8 @@ def login(request):
 
 
 def logout(request):
-    del request.session['userid'] 
+    if 'userid' in request.session:
+        del request.session['userid']
     return redirect('/')
 
 
