@@ -4,17 +4,19 @@ from django.contrib import messages
 
 def update(request, id):
     errors = Show.objects.basic_validator(request.POST)
+    
 
     if len(errors) > 0:
         for key, value in errors.items():
             messages.error(request, value)
-        return redirect('/show/edit/'+id)
-    else:
         show = Show.objects.get(id = id)
+        return redirect(f'/show/{show.id}/edit')
+    else:
+        
         show.title = request.POST['title']
         show.Network = request.POST['network']
         Show.release_date = request.POST['release_date']
-        Show.save()
+        show.save()
         messages.success(request, "Show successfully updated")
         return redirect('/shows')
     
@@ -30,7 +32,6 @@ def new_show(request):
 
 def create_show(request):
     errors = Show.objects.basic_validator(request.POST)
-
     if len(errors) > 0:
         for key, value in errors.items():
             messages.error(request, value)
@@ -53,7 +54,6 @@ def view_show(request, id):
 def edit(request, id): 
     edit = Show.objects.get(id=id)
     context = {'id': edit.id,  'title': edit.title, 'Network': edit.Network, 'release_date': edit.release_date}
-
 
     return render(request, 'edit.html', context) 
 
