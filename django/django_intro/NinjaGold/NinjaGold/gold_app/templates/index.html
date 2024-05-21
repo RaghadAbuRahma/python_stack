@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="yourGold">
+        <h2>Your Gold:</h2>
+        <div>
+            <p>{{ count }}</p>
+        </div>
+        <div class="container">
+            <div class="farm">
+                <h1>Farm</h1>
+                <p>(earns 10-20 gold)</p>
+                <form action="/process_money" method="post">
+                    <input type="hidden" name="which_form" value="farm">
+                    {% csrf_token %}
+                    <input type="submit" name="gold" value="Find Gold!">
+                </form>
+            </div>
+            <div class="Cave">
+                <h1>Cave</h1>
+                <p>(earns 10-20 gold)</p>
+                
+                <form action="/process_money" method="post">
+                    <input type="hidden" name="which_form" value="Cave">
+                    {% csrf_token %}
+                    <input type="submit" name="gold" value="Find Gold!">
+                </form>
+            </div>
+            <div class="House">
+                <h1>House</h1>
+                <p>(earns 10-20 gold)</p>
+                <form action="/process_money" method="post">
+                    <input type="hidden" name="which_form" value="House">
+                    {% csrf_token %}
+                    <input type="submit" name="gold" value="Find Gold!">
+                </form>
+            </div>
+            <div class="Quest">
+                <h1>Quest</h1>
+                <p>(earns/takes 0 - 50 gold)</p>
+                <form action="/increase_decrease" method="post">
+                    <input type="hidden" name="which_form" value="Quest">
+                    {% csrf_token %}
+                    <input type="submit" name="gold" value="Find Gold!">
+                </form>
+            </div>
+        </div>
+        <div class="activities">
+            <h1>Activities:</h1>
+                
+                    <ul>
+                        <li>{{request.session.message}}</li>
+                    </ul>
+                
+        
+            <!-- <p>You entered a {{place}} and earned {{amount}} gold.</p> -->
+
+        </div>
+</body>
+</html>
