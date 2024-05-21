@@ -14,8 +14,9 @@ def add_book(request):
 
     return redirect('/')
 
-def view_book(request, id):
-    this_book = Book.objects.get(id=id)
+def view_book(request, book_id):
+    
+    this_book = Book.objects.get(id=book_id)
     context = {'title': this_book.title, 'id': this_book.id, 'description' : this_book.desc, 'author': this_book.Authors.all()}
 
 
