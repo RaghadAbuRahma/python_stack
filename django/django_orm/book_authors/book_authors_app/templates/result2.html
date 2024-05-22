@@ -12,9 +12,18 @@
     <p>Notes: {{notes}}</p>
     <h2>Books: </h2> 
     <ul>
-        {% for book in book %}
+        {% for book in author_books %}
         <li> {{book.title}}</li>
         {% endfor %}
     </ul>
+    <form action="/select_book/{{id}}" method="post">
+        {% csrf_token %}
+        <select class="select" name="book">
+            {%for book in books %}
+                <option  value="{{book.id}}">{{book.title}}</option>
+            {%endfor%}
+        </select>
+        <input type="submit" value="add">
+    </form>
 </body>
 </html>
