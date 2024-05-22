@@ -1,0 +1,73 @@
+
+.container{
+    margin:  auto;
+    width: 500px;
+    
+}
+
+h1{
+    margin-left: 40px;
+}
+
+input{
+    margin: 10px;
+}
+
+
+.input1{
+    width: 150px;
+    margin-left: 55px;
+}
+
+.input2{
+    margin-left: 55px;
+    width: 150px;
+}
+
+
+
+.input3{
+    width: 150px;
+    margin-left: 88px;
+}
+
+
+.input4{
+    width: 150px;
+    height: 15px;
+    margin-left: 65px;
+}
+
+.input5{
+    width: 150px;
+}
+
+.register{
+    margin-left: 80px;
+}
+
+
+.Goback{
+    margin-left: 400px;
+}
+
+
+.forms{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.input6{
+    margin-left: 35px;
+}
+
+
+.Log_In{
+    margin-left: 100px;
+}
+
+
+.login-error{
+    margin-left: 800px;
+}

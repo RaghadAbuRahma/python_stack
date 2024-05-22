@@ -1,0 +1,25 @@
+.head{
+    display: flex;
+}
+
+label{
+    display: block;
+    font-size: larger;
+}
+
+textarea{
+    display: block;
+}
+
+.messagee{
+    margin-top: -10px;
+    margin-bottom: 40px;
+}
+
+.namee{
+    font-weight: lighter;
+}
+
+.comment{
+    margin-left: 50px;
+}

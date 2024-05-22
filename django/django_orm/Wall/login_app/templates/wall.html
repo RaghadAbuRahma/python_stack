@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wall Assignment - intermediate version</title>
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'style2.css' %}">
+</head>
+<body>
+    <div class="container">
+        <head>
+            <h1>CodingDojo Wall</h1>
+            <div class="welcome">
+                <h3>Welcome {{user}}</h3>
+                <a href="/logout">log off</a>
+            </div>
+        </head>
+        <hr>
+        <form action="post_massage" method="post">
+            {% csrf_token %}
+            <label for="massage">Post a massage</label>
+            <textarea name="massage" id="" cols="80" rows="10"></textarea>
+            <input type="submit" value="Post a massage">
+        </form>
+        <div>
+            {% for massage in massages reversed %}
+            <p class="namee">{{ massage.register.first_name }}</p>
+            <h4 class="messagee">{{ massage.massage }}</h4>
+            
+            <!-- Display comments for each massage -->
+            <ul>
+                {% for comment in massage.comment.all %}
+                    <p>{{comment.user.first_name }}<p>
+                    <h5>{{ comment.comment }}</h5>
+                {% endfor %}
+            </ul>
+            
+            <!-- Form to post a comment for each massage -->
+            <form class="comment" action="/post_comment/{{massage.id}} " method="post">
+                {% csrf_token %}
+                <label for="comment">Comment:</label>
+                <textarea name="comment" id="comment" cols="50" rows="5"></textarea>
+                <input type="submit" value="Post a Comment">
+            </form>
+        {% endfor %}
+        </div>
+
+    
+        
+
+    </div>
+</body>
+</html>
